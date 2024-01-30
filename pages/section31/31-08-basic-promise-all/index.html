@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Promise.all practice</title>
+    <script>
+      const startPromise = async () => {
+        console.time("Each promise");
+        const result1 = await new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve("Success1");
+          }, 2000);
+        });
+        const result2 = await new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve("Success2");
+          }, 3000);
+        });
+        const result3 = await new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve("Success3");
+          }, 1000);
+        });
+
+        const results = [result1, result2, result3];
+        console.log(results);
+        console.timeEnd("Each promise");
+      };
+
+      const startPromiseAll = async () => {
+        console.time("All promise");
+        const results = await Promise.all([
+          new Promise((resolve, reject) => {
+            setTimeout(() => {
+              resolve("Success1");
+            }, 2000);
+          }),
+          new Promise((resolve, reject) => {
+            setTimeout(() => {
+              resolve("Success2");
+            }, 3000);
+          }),
+          new Promise((resolve, reject) => {
+            setTimeout(() => {
+              resolve("Success3");
+            }, 1000);
+          }),
+        ]);
+        console.log(results);
+        console.timeEnd("All promise");
+      };
+    </script>
+  </head>
+  <body>
+    <button onclick="startPromise()">Practice of Promise</button>
+    <button onclick="startPromiseAll()">Practice of Promise.all</button>
+  </body>
+</html>

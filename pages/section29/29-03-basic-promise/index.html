@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+    <script>
+      const onClickThen = () => {
+        new Promise((resolve, reject) => {
+          try {
+            setTimeout(() => {
+              const response = "(Promise) Cute pets";
+              resolve(response); // When success
+            }, 2000);
+          } catch (error) {
+            reject("Failed!"); // When fail
+          }
+        })
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      };
+
+      const onClickAwait = async () => {
+        const result = await new Promise((resolve, reject) => {
+          try {
+            setTimeout(() => {
+              const response = "(Await) Cute pets";
+              resolve(response); // When success
+            }, 2000);
+          } catch (error) {
+            reject(error.message); // When fail
+          }
+        });
+        console.log(result);
+      };
+    </script>
+  </head>
+  <body>
+    <button onclick="onClickThen()">Run Promise(.then)</button>
+    <button onclick="onClickAwait()">Run Promise(.await)</button>
+  </body>
+</html>

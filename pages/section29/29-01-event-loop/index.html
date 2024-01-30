@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Event loop</title>
+    <script>
+      const onClickLoop = () => {
+        console.log("Start!");
+
+        // Wait in the Task Queue
+        setTimeout(() => {
+          console.log("Run after 0 second");
+        }, 0);
+
+        let sum = 0;
+        for (let i = 0; i < 1000000000; i++) {
+          sum += 1;
+        }
+        console.log("End!");
+      };
+    </script>
+  </head>
+  <body>
+    <button onclick="onClickLoop()">Start</button>
+  </body>
+</html>

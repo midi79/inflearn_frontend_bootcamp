@@ -1,0 +1,19 @@
+<!-- <<Resource download order>>
+  1. HTML 파일의 다운로드 주소를 읽어드린 후, 백그라운드에서 6개씩 다운로드 시도 
+  2. 위에서부터 읽기 시작
+  3. STOP 태그에서 화면에서 멈추지만 download 요청을 함  
+-->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Resource download order</title>
+    <script>
+      alert("STOP!");
+    </script>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <script src="./index.js"></script>
+  </body>
+</html>

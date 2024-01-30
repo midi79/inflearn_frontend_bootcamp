@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Understanding of "this"</title>
+    <script>
+      class ClassCounterPage {
+        count = 10;
+
+        onClickCountUp = () => {
+          console.log("Counter : ", this.count);
+        };
+
+        render() {
+          const button = document.createElement("button");
+          button.innerText = "Add count";
+          //button.addEventListener("click", this.onClickCountUp.bind(this)); None use of arrow function
+          button.addEventListener("click", this.onClickCountUp);
+          document.body.appendChild(button);
+        }
+      }
+
+      window.onload = () => {
+        const counter = new ClassCounterPage();
+        counter.render();
+      };
+    </script>
+  </head>
+  <body></body>
+</html>

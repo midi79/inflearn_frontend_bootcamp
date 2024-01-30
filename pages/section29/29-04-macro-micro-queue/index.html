@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Event loop</title>
+    <script>
+      const onClickLoop = () => {
+        console.log("Start!");
+
+        // Asynchronous task with macro queue
+        setTimeout(() => {
+          // Asynchronous task with micro queue
+          new Promise((resolve) =>
+            resolve("Anderson").then(() => {
+              console.log("This is Promise(setTimeout)");
+            }),
+          );
+          console.log("This is setTimeout, macro queue, run after 0 second");
+        }, 0);
+
+        // Asynchronous task with micro queue
+        new Promise((resolve) =>
+          resolve("Anderson").then(() => {
+            console.log(
+              "This is Promise(1st), micro queue, run after 0 second",
+            );
+          }),
+        );
+
+        // Asynchronous task with macro queue
+        setInterval(() => {
+          console.log("This is setInterval, macro queue, run after 0 second");
+        }, 0);
+
+        let sum = 0;
+        for (let i = 0; i < 1000000000; i++) {
+          sum += 1;
+        }
+
+        // Asynchronous task with micro queue
+        new Promise((resolve) =>
+          resolve("Alice").then(() => {
+            console.log(
+              "This is Promise(2nd), micro queue, run after 0 second",
+            );
+          }),
+        );
+
+        console.log("End!");
+      };
+    </script>
+  </head>
+  <body>
+    <button onclick="onClickLoop()">Start</button>
+  </body>
+</html>

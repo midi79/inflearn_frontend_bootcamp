@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>My custom Axios</title>
+    <script>
+      const myAxios = {
+        get: (url) => {
+          return new Promise((resolve, reject) => {
+            const response = new XMLHttpRequest();
+            response.open("get", url);
+            response.send();
+            response.addEventListener("load", (res) => {
+              resolve(res.target.response);
+            });
+          });
+        },
+        post: () => {},
+      };
+
+      const onClickAxios = async () => {
+        myAxios.get("https://koreanjson.com/posts/1").then((res) => {
+          console.log("Result of .then() : ", res);
+        });
+
+        const result = await myAxios.get("https://koreanjson.com/posts/2");
+        console.log("Result of await : ", result);
+      };
+    </script>
+  </head>
+  <body>
+    <button onclick="onClickAxios()">Call Axios</button>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test whether there are changing items or not  1`] = `
+<div>
+  <div>
+    IU is 30 years old.
+  </div>
+  IU's favorite color : 
+  <input
+    type="text"
+  />
+  <button>
+    Hang out with IU
+  </button>
+</div>
+`;
